@@ -1,0 +1,12 @@
+{
+  "name": "k6",
+  "version": "1.0.0",
+  "description": "This is k6 script example",
+  "license": "ISC",
+  "author": "Arshad Automation",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
