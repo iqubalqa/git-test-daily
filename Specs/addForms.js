@@ -6,7 +6,7 @@ export const options = {
     browser_test: {
       executor: 'shared-iterations',
       vus: 1,
-      duration: '1m',
+      // duration: '1m',
       options: {
         browser: {
           type: 'chromium',
@@ -67,7 +67,7 @@ export default async function () {
 
   check(page, {                        // ← check is a sync function, no await needed
     'Text Validation': p =>
-      p.locator('h1').textContent() == "Thank you for your purchase today!",
+      p.locator('h1').textContent() == " Thank you for your purchase today!",
   });
 
   sleep(1);

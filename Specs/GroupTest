@@ -1,0 +1,14 @@
+import http from 'k6/http';
+import { group } from 'k6';
+
+export default function () {
+
+    group('Policy - View List', function () {
+        http.get('https://blazedemo.com/purchase.php');
+    });
+
+    group('Policy - View Details', function () {
+        http.get('https://blazedemo.com/purchase.php?id=12345');
+    });
+
+}

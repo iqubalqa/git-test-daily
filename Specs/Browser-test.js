@@ -1,11 +1,10 @@
 import { browser } from 'k6/browser';
-import { sleep } from 'k6';
 
 export const options = {
   scenarios: {
     browser_test: {
       executor: 'constant-vus',
-      vus: 10,
+      vus: 1,
       duration: '30s',
       options: {
         browser: {
@@ -17,11 +16,21 @@ export const options = {
 };
 
 export default async function () {
-  const page = browser.newPage();
 
-  await page.goto('https://blazedemo.com/');
+  const context = await browser.newContext();
+  const page = await context.newPage();
 
-  sleep(2);
+  try {
+    await page.goto('https://google.com/', {
+      timeout: '60s',
+    });
 
-//   await page.close();
+    await page.waitForLoadState('load');
+
+    // Keep browser visible
+    await page.waitForTimeout(10000);
+
+  } finally {
+    await page.close();
+  }
 }
